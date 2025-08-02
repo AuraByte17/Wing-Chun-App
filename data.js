@@ -13,41 +13,47 @@ const BELT_SYSTEM = [
 ];
 
 const WING_CHUN_TRAINING = {
-    "Formas": [
-        { id: "wc1", title: "A Pequena Ideia (Siu Nim Tao)", description: "A primeira forma, base de todo o sistema. Foco na estrutura, linha central e movimentos básicos.", xp: 150, requiredBelt: 2, video: "Siu_Nim_Tao" },
+    "Fundamentos (Nível Branco)": [
+        { id: "wc1", title: "Yee Jee Kim Yeung Ma", description: "A postura base de treino. Foco na estrutura, relaxamento e enraizamento.", xp: 10, requiredBelt: 0, difficulty: 'Iniciante', videoPath: "videos/Yee_Jee_Kim_Yeung_Ma.mp4" },
+        { id: "wc2", title: "Man Sau / Wu Sau", description: "As posições de mão avançada (Man Sau) e mão de guarda (Wu Sau).", xp: 15, requiredBelt: 0, difficulty: 'Iniciante', videoPath: "videos/Man_Sau_Wu_Sau.mp4" },
+        { id: "wc3", title: "Soco Direto (Yat Chi Kuen)", description: "O soco em cadeia vertical. Foco na estrutura e relaxamento, não na força bruta.", xp: 15, requiredBelt: 0, difficulty: 'Iniciante', videoPath: "videos/Soco_Direto.mp4" },
+        { id: "wc4", title: "Cavalo que Avança (Seung Ma)", description: "Treino de avanço mantendo a estrutura e a linha central, para encurtar a distância.", xp: 20, requiredBelt: 0, difficulty: 'Iniciante', videoPath: "videos/Seung_Ma.mp4" },
     ],
-    "Andamentos (Juen Ma, Seung Ma)": [
-        { id: "wc2", title: "Cavalo que Gira (Juen Ma)", description: "Treino de rotação da anca e postura para gerar força e mudar de direção.", xp: 20, requiredBelt: 1, video: "Juen_Ma" },
-        { id: "wc3", title: "Cavalo que Avança (Seung Ma)", description: "Treino de avanço mantendo a estrutura e a linha central, para encurtar a distância.", xp: 20, requiredBelt: 1, video: "Seung_Ma" },
+    "Técnicas (Nível Amarelo)": [
+        { id: "wc5", title: "A Pequena Ideia (Siu Nim Tao)", description: "A primeira forma, base de todo o sistema. Foco na estrutura, linha central e movimentos básicos.", xp: 80, requiredBelt: 1, difficulty: 'Iniciante', videoPath: "videos/Siu_Nim_Tao.mp4" },
+        { id: "wc6", title: "Cavalo que Gira (Juen Ma)", description: "Treino de rotação da anca e postura para gerar força e mudar de direção.", xp: 20, requiredBelt: 1, difficulty: 'Iniciante', videoPath: "videos/Juen_Ma.mp4" },
+        { id: "wc7", title: "Socos com Juen Ma / Seung Ma", description: "Combinar o soco em cadeia com a rotação da postura (Juen Ma) e o avanço (Seung Ma).", xp: 30, requiredBelt: 1, difficulty: 'Iniciante', videoPath: "videos/Socos_Movimento.mp4" },
+        { id: "wc8", title: "Pontapé Frontal (Jing Gerk)", description: "Pontapé defensivo para atacar a curta distância, visando a zona baixa do oponente.", xp: 25, requiredBelt: 1, difficulty: 'Iniciante', videoPath: "videos/Jing_Gerk.mp4" },
+        { id: "wc9", title: "Tan Sau / Pak Sau", description: "Treinar os bloqueios básicos de deflexão com a palma para cima e em tapa.", xp: 25, requiredBelt: 1, difficulty: 'Iniciante', videoPath: "videos/Tan_Pak_Sao.mp4" },
     ],
-    "Socos nos Mitts": [
-        { id: "wc4", title: "Socos em Yi Ji Kim Yeung Ma", description: "Prática de 1, 2 e 3 socos em cadeia na postura base para desenvolver a coordenação.", xp: 25, requiredBelt: 1, video: "Soco_YJKYM" },
-        { id: "wc5", title: "Socos com Juen Ma", description: "Combinar o soco em cadeia com a rotação da postura (Juen Ma).", xp: 30, requiredBelt: 1, video: "Soco_Juen_Ma" },
-        { id: "wc6", title: "Socos com Seung Ma", description: "Combinar o soco em cadeia com o avanço (Seung Ma).", xp: 30, requiredBelt: 1, video: "Soco_Seung_Ma" },
+    "Técnicas Intermédias (Nível Laranja e Superior)": [
+        { id: "wc10", title: "Bong Sau (Braço de Asa)", description: "Pratica a deflexão com o braço de asa. Usa-o para desviar forte pressão frontal.", xp: 30, requiredBelt: 2, difficulty: 'Intermédio', videoPath: "videos/Bong_Sau.mp4" },
+        { id: "wc11", title: "Lap Sau (Mão que Puxa)", description: "Pratica puxar o oponente para o desequilibrar enquanto se ataca.", xp: 35, requiredBelt: 3, difficulty: 'Intermédio', videoPath: "videos/Lap_Sau.mp4" },
+        { id: "wc12", title: "Fook Sau (Mão que Controla)", description: "Uma mão suave usada para sentir e controlar os braços do oponente.", xp: 35, requiredBelt: 4, difficulty: 'Intermédio', videoPath: "videos/Fook_Sau.mp4" },
+        { id: "wc13", title: "Cham Kiu (Procurar a Ponte)", description: "A segunda forma. Foco na unidade corporal, rotação, passos e pontapés.", xp: 150, requiredBelt: 3, difficulty: 'Intermédio', videoPath: "videos/Cham_Kiu.mp4" },
     ],
-     "Pontapés (Gerk)": [
-        { id: "wc7", title: "Frontal/Ascendente (Jing Gerk)", description: "Pontapé defensivo para atacar a curta distância, visando a zona baixa do oponente.", xp: 25, requiredBelt: 1, video: "Jing_Gerk" },
-        { id: "wc8", title: "Lateral/Horizontal (Wang Gerk)", description: "Pontapé lateral para atacar os flancos ou joelhos do oponente.", xp: 25, requiredBelt: 1, video: "Wang_Gerk" },
-    ],
-    "Exercícios Específicos": [
-        { id: "wc9", title: "Soco Barra Soco (Kuen Siu Kuen)", description: "Exercício para treinar a coordenação e o timing entre defesa e ataque.", xp: 30, requiredBelt: 1, video: "Kuen_Siu_Kuen" },
-        { id: "wc10", title: "Exercício de Pak Sao (com Seung Ma)", description: "Treino de Pak Da (bater e atacar) e Tan Da (desviar e atacar) em movimento.", xp: 35, requiredBelt: 1, video: "Pak_Sao_Exercicio" },
-        { id: "wc11", title: "Quatro Portões (Tan Da + Gaun Da)", description: "Exercício para treinar a defesa dos quatro 'portões' ou zonas de ataque.", xp: 35, requiredBelt: 1, video: "Quatro_Portoes" },
-    ],
-    "Mãos que Agarram (Lap Sao)": [
-        { id: "wc12", title: "3 Trocas de Lap Sao", description: "Exercício fundamental para treinar o controlo, o timing e a sensibilidade ao puxar e atacar (Lap Sao, Soco, Gum Da).", xp: 40, requiredBelt: 1, video: "Lap_Sao" },
-    ],
-    "Mãos Coladas (Dan Chi Sao)": [
-        { id: "wc13", title: "Troca em Tan Sao", description: "Exercício base de Chi Sao para desenvolver a sensibilidade e a reação ao contacto.", xp: 40, requiredBelt: 1, video: "Dan_Chi_Sao_Tan" },
-        { id: "wc14", title: "Dan Chi Sao com Ataques", description: "Introdução de ataques e deslocamento em Seung Ma ao exercício de Chi Sao.", xp: 50, requiredBelt: 1, video: "Dan_Chi_Sao_Ataque" },
-    ],
+    "Técnicas Avançadas": [
+        { id: "wc14", title: "Muk Yan Jong (Homem de Madeira)", description: "Treino na forma do boneco de madeira para refinar ângulos, posições e força.", xp: 200, requiredBelt: 4, difficulty: 'Avançado', videoPath: "videos/Muk_Yan_Jong.mp4" },
+        { id: "wc15", title: "Biu Jee (Dedos que Furam)", description: "A terceira forma, focada em técnicas de emergência e recuperação da linha central.", xp: 250, requiredBelt: 5, difficulty: 'Avançado', videoPath: "videos/Biu_Jee.mp4" },
+        { id: "wc16", title: "Luk Dim Boon Kwan (Bastão Longo)", description: "Treino com o bastão de 6 pontos e meio para desenvolver força e precisão.", xp: 300, requiredBelt: 7, difficulty: 'Avançado', videoPath: "videos/Bastao.mp4" },
+        { id: "wc17", title: "Baat Jaam Do (Facas de Oito Cortes)", description: "Treino com as facas borboleta, a extensão máxima das mãos do praticante.", xp: 350, requiredBelt: 8, difficulty: 'Avançado', videoPath: "videos/Facas.mp4" },
+    ]
 };
 
 const CONDITIONING_TRAINING = {
+    "Condicionamento Essencial (Nível Branco)": [
+        { id: "c1", title: "Flexões", description: "Desenvolve a força do tronco e braços. Começa com um número confortável e aumenta.", xp: 15, requiredBelt: 0, difficulty: 'Iniciante', videoPath: "videos/Flexoes.mp4" },
+        { id: "c2", title: "Agachamentos", description: "Desenvolve a força das pernas para uma postura estável. Mantém as costas direitas.", xp: 15, requiredBelt: 0, difficulty: 'Iniciante', videoPath: "videos/Agachamentos.mp4" },
+        { id: "c3", title: "Prancha", description: "Fortalece o core para manter a estrutura. Tenta aguentar por períodos crescentes.", xp: 20, requiredBelt: 0, difficulty: 'Iniciante', videoPath: "videos/Prancha.mp4" },
+    ],
     "Teste de Aptidão Física (Nível Amarelo)": [
-        { id: "c1", title: "30 Flexões", description: "Teste de força do tronco e braços. As raparigas podem fazer de joelhos.", xp: 30, requiredBelt: 1, video: "Flexoes" },
-        { id: "c2", title: "1 Minuto em Prancha", description: "Teste de resistência do core, fundamental para a estrutura do Wing Chun.", xp: 30, requiredBelt: 1, video: "Prancha" },
-        { id: "c3", title: "30 Agachamentos", description: "Teste de força e resistência das pernas, a base de uma boa postura.", xp: 30, requiredBelt: 1, video: "Agachamentos" },
+        { id: "c4", title: "30 Flexões", description: "Teste de força do tronco e braços. As raparigas podem fazer de joelhos.", xp: 30, requiredBelt: 1, difficulty: 'Iniciante', videoPath: "videos/Flexoes_Teste.mp4" },
+        { id: "c5", title: "1 Minuto em Prancha", description: "Teste de resistência do core, fundamental para a estrutura do Wing Chun.", xp: 30, requiredBelt: 1, difficulty: 'Iniciante', videoPath: "videos/Prancha_Teste.mp4" },
+        { id: "c6", title: "30 Agachamentos", description: "Teste de força e resistência das pernas, a base de uma boa postura.", xp: 30, requiredBelt: 1, difficulty: 'Iniciante', videoPath: "videos/Agachamentos_Teste.mp4" },
+    ],
+    "Condicionamento Avançado": [
+        { id: "c7", title: "Isometria na Parede", description: "Cria resistência nas pernas para manter as posturas por mais tempo.", xp: 25, requiredBelt: 2, difficulty: 'Intermédio', videoPath: "videos/Isometria_Parede.mp4" },
+        { id: "c8", title: "Flexões Diamante", description: "Variante de flexão para maior foco nos tríceps, crucial para o soco Wing Chun.", xp: 35, requiredBelt: 4, difficulty: 'Avançado', videoPath: "videos/Flexoes_Diamante.mp4" },
     ]
 };
 
@@ -83,4 +89,4 @@ const ACHIEVEMENTS = {
     'STREAK_30': { title: 'Vontade de Ferro', desc: 'Completa uma sequência de 30 dias de treino.', icon: '❤️‍🔥', check: (p) => p.streak >= 30 },
 };
 
-const PROFILE_STORAGE_KEY = 'wingChunProfile_v5_pt';
+const PROFILE_STORAGE_KEY = 'wingChunProfile_v6_pt';
