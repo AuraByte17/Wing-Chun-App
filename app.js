@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'none';
         }
     }
-
+    
     renderPhilosophy();
     loadProfile();
 });
