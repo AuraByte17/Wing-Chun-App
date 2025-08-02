@@ -21,6 +21,7 @@ const wcContainer = document.getElementById('container-treinos-wc');
 const conditioningContainer = document.getElementById('container-treinos-condicionamento');
 const achievementsGrid = document.getElementById('achievements-grid');
 const beltProgressionContainer = document.getElementById('belt-progression-container');
+const philosophyContainer = document.getElementById('container-filosofia');
 const modal = document.getElementById('video-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalVideoContainer = document.getElementById('modal-video-container');
@@ -163,13 +164,12 @@ function openModal(title, videoId) {
 
 function renderTrainingList(data, container, unlockedItems) {
     container.innerHTML = '';
+    let itemsRendered = 0;
     for (const category in data) {
         const categoryItems = data[category].filter(item => unlockedItems.some(unlocked => unlocked.id === item.id));
 
-        if (categoryItems.length === 0) {
-            container.innerHTML = `<p>Não há treinos disponíveis para o teu nível atual. Avança para o próximo cinturão para desbloquear mais!</p>`;
-            continue;
-        };
+        if (categoryItems.length === 0) continue;
+        itemsRendered += categoryItems.length;
 
         const categoryEl = document.createElement('div');
         categoryEl.className = 'training-category';
@@ -207,6 +207,9 @@ function renderTrainingList(data, container, unlockedItems) {
 
         categoryEl.appendChild(listEl);
         container.appendChild(categoryEl);
+    }
+    if (itemsRendered === 0) {
+        container.innerHTML = `<p>Não há treinos disponíveis para o teu nível atual. Avança para o próximo cinturão para desbloquear mais!</p>`;
     }
 }
 
@@ -261,6 +264,19 @@ function renderAchievements() {
     });
 }
 
+function renderPhilosophy() {
+    philosophyContainer.innerHTML = '';
+    PHILOSOPHY_CONTENT.forEach(entry => {
+        const entryEl = document.createElement('div');
+        entryEl.className = 'philosophy-entry';
+        entryEl.innerHTML = `
+            <h3>${entry.title}</h3>
+            <p>${entry.text}</p>
+        `;
+        philosophyContainer.appendChild(entryEl);
+    });
+}
+
 function checkDailyChallenge() {
     const today = new Date().toISOString().split('T')[0];
     const lastDate = userProfile.daily?.date;
@@ -310,7 +326,6 @@ function renderDailyChallenge() {
             }
             userProfile.streak += 1;
             completeTraining(bonusXp, e.target);
-            // Chamamos saveProfile() dentro de completeTraining, por isso não é necessário aqui
         });
     }
 }
@@ -345,5 +360,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    renderPhilosophy();
     loadProfile();
 });

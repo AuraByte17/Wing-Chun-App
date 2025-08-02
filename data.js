@@ -2,52 +2,73 @@
 
 const BELT_SYSTEM = [
     { level: 0, name: "Cinturão Branco", minXp: 0, color: "#ecf0f1", secondaryColor: "#bdc3c7" },
-    { level: 1, name: "Cinturão Amarelo", minXp: 100, color: "#f1c40f", secondaryColor: "#f39c12" },
-    { level: 2, name: "Cinturão Laranja", minXp: 300, color: "#e67e22", secondaryColor: "#d35400" },
-    { level: 3, name: "Cinturão Verde", minXp: 600, color: "#2ecc71", secondaryColor: "#27ae60" },
-    { level: 4, name: "Cinturão Azul", minXp: 1000, color: "#3498db", secondaryColor: "#2980b9" },
-    { level: 5, name: "Cinturão Roxo", minXp: 1500, color: "#9b59b6", secondaryColor: "#8e44ad" },
-    { level: 6, name: "Cinturão Castanho", minXp: 2200, color: "#a1662f", secondaryColor: "#6d4c41" },
-    { level: 7, name: "Cinturão Preto", minXp: 3000, color: "#34495e", secondaryColor: "#2c3e50" },
-    { level: 8, name: "Mestre", minXp: 5000, color: "#e74c3c", secondaryColor: "#c0392b" },
+    { level: 1, name: "Cinturão Amarelo - Wing Chun", minXp: 150, color: "#f1c40f", secondaryColor: "#f39c12" },
+    { level: 2, name: "Cinturão Laranja - Siu Nim Tao", minXp: 500, color: "#e67e22", secondaryColor: "#d35400" },
+    { level: 3, name: "Cinturão Vermelho - Cham Kiu", minXp: 1000, color: "#e74c3c", secondaryColor: "#c0392b" },
+    { level: 4, name: "Cinturão Verde - Muk Yan Jong", minXp: 1800, color: "#2ecc71", secondaryColor: "#27ae60" },
+    { level: 5, name: "Cinturão Castanho - Biu Jee", minXp: 2800, color: "#a1662f", secondaryColor: "#6d4c41" },
+    { level: 6, name: "Cinturão Preto", minXp: 4000, color: "#2c3e50", secondaryColor: "#000000" },
+    { level: 7, name: "Cinturão Preto I - Luk Dim Boon Kwan", minXp: 5500, color: "#000000", secondaryColor: "#34495e" },
+    { level: 8, name: "Cinturão Preto II - Baat Jaam Do", minXp: 7500, color: "#000000", secondaryColor: "#e74c3c" },
 ];
 
 const WING_CHUN_TRAINING = {
-    "Posturas e Trabalho de Pés": [
-        { id: "wc1", title: "Yee Jee Kim Yeung Ma", description: "Pratica a postura básica de treino. Foca-te na estrutura, relaxamento e enraizamento.", xp: 10, requiredBelt: 0, video: "Yee_Jee_Kim_Yeung_Ma" },
-        { id: "wc2", title: "Man Sau / Wu Sau", description: "Treina as posições de mão avançada (Man Sau) e mão de guarda (Wu Sau).", xp: 15, requiredBelt: 0, video: "Man_Sau_Wu_Sau" },
-        { id: "wc3", title: "Passos Básicos", description: "Pratica os passos para a frente, para trás e em rotação, mantendo a integridade da postura.", xp: 20, requiredBelt: 1, video: "Passos_Basicos" },
-        { id: "wc4", title: "Deslocação (Biu Ma)", description: "Pratica a deslocação do peso corporal para gerar potência e evasão.", xp: 25, requiredBelt: 2, video: "Deslocacao" },
-    ],
-    "Técnicas de Mãos": [
-        { id: "wc5", title: "Soco Direto (Yat Chi Kuen)", description: "Pratica o soco em cadeia vertical. Foca-te na estrutura e relaxamento, não na força.", xp: 15, requiredBelt: 0, video: "Soco_Direto" },
-        { id: "wc6", title: "Tan Sau (Bloqueio Palma p/ Cima)", description: "Treina o bloqueio básico de deflexão com a palma para cima. Foca-te na energia do cotovelo.", xp: 20, requiredBelt: 1, video: "Tan_Sau" },
-        { id: "wc7", title: "Pak Sau (Bloqueio em Tapa)", description: "Pratica a deflexão em tapa. Deve ser rápido e redirecionar a energia.", xp: 20, requiredBelt: 1, video: "Pak_Sau" },
-        { id: "wc8", title: "Bong Sau (Bloqueio Braço de Asa)", description: "Pratica a deflexão com o braço de asa. Usa-o para desviar forte pressão frontal.", xp: 30, requiredBelt: 2, video: "Bong_Sau" },
-        { id: "wc9", title: "Lap Sau (Mão que Puxa)", description: "Pratica puxar o oponente para o desequilibrar enquanto se ataca.", xp: 35, requiredBelt: 3, video: "Lap_Sau" },
-        { id: "wc10", title: "Fook Sau (Mão que Controla)", description: "Uma mão suave usada para sentir e controlar os braços do oponente.", xp: 35, requiredBelt: 4, video: "Fook_Sau" },
-    ],
     "Formas": [
-        { id: "wc11", title: "Siu Nim Tao (Pequena Ideia)", description: "Pratica a primeira forma. Foca-te na quietude, estrutura e geração de energia.", xp: 100, requiredBelt: 2, video: "Siu_Nim_Tao" },
-        { id: "wc12", title: "Chum Kiu (Procurar a Ponte)", description: "Pratica a segunda forma. Foca-te na unidade corporal, rotação e passos.", xp: 150, requiredBelt: 4, video: "Chum_Kiu" },
-        { id: "wc13", title: "Biu Jee (Dedos que Furam)", description: "A terceira forma, focada em técnicas de emergência e geração de potência.", xp: 200, requiredBelt: 6, video: "Biu_Jee" },
-    ]
+        { id: "wc1", title: "A Pequena Ideia (Siu Nim Tao)", description: "A primeira forma, base de todo o sistema. Foco na estrutura, linha central e movimentos básicos.", xp: 150, requiredBelt: 2, video: "Siu_Nim_Tao" },
+    ],
+    "Andamentos (Juen Ma, Seung Ma)": [
+        { id: "wc2", title: "Cavalo que Gira (Juen Ma)", description: "Treino de rotação da anca e postura para gerar força e mudar de direção.", xp: 20, requiredBelt: 1, video: "Juen_Ma" },
+        { id: "wc3", title: "Cavalo que Avança (Seung Ma)", description: "Treino de avanço mantendo a estrutura e a linha central, para encurtar a distância.", xp: 20, requiredBelt: 1, video: "Seung_Ma" },
+    ],
+    "Socos nos Mitts": [
+        { id: "wc4", title: "Socos em Yi Ji Kim Yeung Ma", description: "Prática de 1, 2 e 3 socos em cadeia na postura base para desenvolver a coordenação.", xp: 25, requiredBelt: 1, video: "Soco_YJKYM" },
+        { id: "wc5", title: "Socos com Juen Ma", description: "Combinar o soco em cadeia com a rotação da postura (Juen Ma).", xp: 30, requiredBelt: 1, video: "Soco_Juen_Ma" },
+        { id: "wc6", title: "Socos com Seung Ma", description: "Combinar o soco em cadeia com o avanço (Seung Ma).", xp: 30, requiredBelt: 1, video: "Soco_Seung_Ma" },
+    ],
+     "Pontapés (Gerk)": [
+        { id: "wc7", title: "Frontal/Ascendente (Jing Gerk)", description: "Pontapé defensivo para atacar a curta distância, visando a zona baixa do oponente.", xp: 25, requiredBelt: 1, video: "Jing_Gerk" },
+        { id: "wc8", title: "Lateral/Horizontal (Wang Gerk)", description: "Pontapé lateral para atacar os flancos ou joelhos do oponente.", xp: 25, requiredBelt: 1, video: "Wang_Gerk" },
+    ],
+    "Exercícios Específicos": [
+        { id: "wc9", title: "Soco Barra Soco (Kuen Siu Kuen)", description: "Exercício para treinar a coordenação e o timing entre defesa e ataque.", xp: 30, requiredBelt: 1, video: "Kuen_Siu_Kuen" },
+        { id: "wc10", title: "Exercício de Pak Sao (com Seung Ma)", description: "Treino de Pak Da (bater e atacar) e Tan Da (desviar e atacar) em movimento.", xp: 35, requiredBelt: 1, video: "Pak_Sao_Exercicio" },
+        { id: "wc11", title: "Quatro Portões (Tan Da + Gaun Da)", description: "Exercício para treinar a defesa dos quatro 'portões' ou zonas de ataque.", xp: 35, requiredBelt: 1, video: "Quatro_Portoes" },
+    ],
+    "Mãos que Agarram (Lap Sao)": [
+        { id: "wc12", title: "3 Trocas de Lap Sao", description: "Exercício fundamental para treinar o controlo, o timing e a sensibilidade ao puxar e atacar (Lap Sao, Soco, Gum Da).", xp: 40, requiredBelt: 1, video: "Lap_Sao" },
+    ],
+    "Mãos Coladas (Dan Chi Sao)": [
+        { id: "wc13", title: "Troca em Tan Sao", description: "Exercício base de Chi Sao para desenvolver a sensibilidade e a reação ao contacto.", xp: 40, requiredBelt: 1, video: "Dan_Chi_Sao_Tan" },
+        { id: "wc14", title: "Dan Chi Sao com Ataques", description: "Introdução de ataques e deslocamento em Seung Ma ao exercício de Chi Sao.", xp: 50, requiredBelt: 1, video: "Dan_Chi_Sao_Ataque" },
+    ],
 };
 
 const CONDITIONING_TRAINING = {
-    "Força": [
-        { id: "c1", title: "Flexões", description: "Desenvolve a força do tronco e do core, essencial para socos potentes.", xp: 15, requiredBelt: 0, video: "Flexoes" },
-        { id: "c2", title: "Agachamentos", description: "Desenvolve a força das pernas para uma postura estável e trabalho de pés poderoso.", xp: 15, requiredBelt: 0, video: "Agachamentos" },
-        { id: "c3", title: "Prancha", description: "Fortalece o core para manter a estrutura durante as técnicas.", xp: 20, requiredBelt: 1, video: "Prancha" },
-        { id: "c4", title: "Isometria na Parede", description: "Cria resistência nas pernas para manter as posturas.", xp: 25, requiredBelt: 2, video: "Isometria_Parede" },
-    ],
-    "Flexibilidade e Mobilidade": [
-        { id: "c5", title: "Rotações de Ombros", description: "Melhora a mobilidade dos ombros para técnicas de mãos fluidas.", xp: 10, requiredBelt: 0, video: "Rotacoes_Ombros" },
-        { id: "c6", title: "Círculos com a Anca", description: "Aumenta a flexibilidade da anca para melhores rotações e pontapés.", xp: 10, requiredBelt: 1, video: "Circulos_Anca" },
-        { id: "c7", title: "Rotações de Pulsos e Tornozelos", description: "Essencial para prevenir lesões e manter a flexibilidade em articulações chave.", xp: 5, requiredBelt: 0, video: "Rotacoes_Pulsos" },
-        { id: "c8", title: "Alongamentos Dinâmicos de Isquiotibiais", description: "Melhora a flexibilidade para pontapés e posturas baixas.", xp: 15, requiredBelt: 3, video: "Alongamentos_Dinamicos" },
+    "Teste de Aptidão Física (Nível Amarelo)": [
+        { id: "c1", title: "30 Flexões", description: "Teste de força do tronco e braços. As raparigas podem fazer de joelhos.", xp: 30, requiredBelt: 1, video: "Flexoes" },
+        { id: "c2", title: "1 Minuto em Prancha", description: "Teste de resistência do core, fundamental para a estrutura do Wing Chun.", xp: 30, requiredBelt: 1, video: "Prancha" },
+        { id: "c3", title: "30 Agachamentos", description: "Teste de força e resistência das pernas, a base de uma boa postura.", xp: 30, requiredBelt: 1, video: "Agachamentos" },
     ]
 };
+
+const PHILOSOPHY_CONTENT = [
+    { 
+        title: "O Sistema Completo: Uma Abordagem Integrada",
+        text: "O desempenho de topo em Wing Chun não é apenas o resultado da prática técnica isolada. É um estado alcançado através da integração sinérgica de três pilares distintos, mas interligados: Mestria Técnica e Filosófica, Condicionamento Físico de Elite e Nutrição de Precisão. O caminho para a mestria exige não só compreender as técnicas, mas também forjar o corpo que as executa e abastecer o motor biológico que as potencia com uma eficiência devastadora."
+    },
+    {
+        title: "Pilar 1: Mestria Técnica e Filosófica",
+        text: "Este é o coração do Wing Chun. Envolve a aprendizagem e o refinamento das formas, posturas, técnicas de mãos e trabalho de pés. Mais do que a repetição, trata-se de compreender os princípios subjacentes, como a teoria da linha central, a economia de movimento e a simultaneidade de defesa e ataque. É a 'abordagem científica ao combate' que define a nossa arte."
+    },
+    {
+        title: "Pilar 2: Condicionamento Físico de Elite",
+        text: "O seu corpo é o veículo que expressa a sua técnica. Um condicionamento superior transforma a teoria em realidade. A força permite-lhe manter a estrutura sob pressão, a resistência permite-lhe treinar mais tempo e com mais intensidade, e a flexibilidade previne lesões e permite um movimento mais fluido e eficiente. Forjar este 'recipiente físico' é essencial."
+    },
+    {
+        title: "Pilar 3: Nutrição de Precisão",
+        text: "A nutrição é o combustível para o seu motor biológico. Uma alimentação adequada otimiza a recuperação muscular, fornece a energia necessária para sessões de treino exigentes e melhora a clareza mental. Sem o combustível certo, mesmo o motor mais bem afinado não terá o desempenho esperado. A sua dieta é uma parte integrante do seu treino."
+    }
+];
 
 const ALL_TRAINING_ITEMS = [];
 Object.values(WING_CHUN_TRAINING).forEach(cat => ALL_TRAINING_ITEMS.push(...cat));
@@ -55,12 +76,11 @@ Object.values(CONDITIONING_TRAINING).forEach(cat => ALL_TRAINING_ITEMS.push(...c
 
 const ACHIEVEMENTS = {
     'BEGINNER': { title: 'Um Novo Começo', desc: 'Começa a tua jornada de Wing Chun.', icon: '🌱', check: (p) => p.xp > 0 },
-    'YELLOW_BELT': { title: 'Primeira Promoção', desc: 'Alcança o nível de Cinturão Amarelo.', icon: '🟡', check: (p) => getUserBelt(p.xp).level >= 1 },
-    'GREEN_BELT': { title: 'A Meio Caminho', desc: 'Alcança o nível de Cinturão Verde.', icon: '🟢', check: (p) => getUserBelt(p.xp).level >= 3 },
-    'BLACK_BELT': { title: 'Mestre dos Básicos', desc: 'Alcança o nível de Cinturão Preto.', icon: '⚫', check: (p) => getUserBelt(p.xp).level >= 7 },
+    'YELLOW_BELT': { title: 'Cinturão Amarelo', desc: 'Alcança o primeiro nível de Wing Chun.', icon: '🟡', check: (p) => getUserBelt(p.xp).level >= 1 },
+    'ORANGE_BELT': { title: 'Mestre da Siu Nim Tao', desc: 'Alcança o nível de Cinturão Laranja.', icon: '🟠', check: (p) => getUserBelt(p.xp).level >= 2 },
+    'RED_BELT': { title: 'Mestre da Cham Kiu', desc: 'Alcança o nível de Cinturão Vermelho.', icon: '🔴', check: (p) => getUserBelt(p.xp).level >= 3 },
     'STREAK_7': { title: 'Aluno Dedicado', desc: 'Completa uma sequência de 7 dias de treino.', icon: '🔥', check: (p) => p.streak >= 7 },
     'STREAK_30': { title: 'Vontade de Ferro', desc: 'Completa uma sequência de 30 dias de treino.', icon: '❤️‍🔥', check: (p) => p.streak >= 30 },
-    'SIU_NIM_TAO': { title: 'Pequena Ideia', desc: 'Desbloqueia a primeira forma, Siu Nim Tao.', icon: '💡', check: (p) => getUserBelt(p.xp).level >= 2 },
 };
 
-const PROFILE_STORAGE_KEY = 'wingChunProfile_v4_pt';
+const PROFILE_STORAGE_KEY = 'wingChunProfile_v5_pt';
