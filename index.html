@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Teko:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Biblioteca de Gráficos Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,13 +33,20 @@
             <button class="nav-button" data-seccao="seccao-daily" title="Desafio Diário">
                 <span class="icon">🎯</span><span class="text">Diário</span>
             </button>
+            <!-- Novo: Botão Planos de Treino -->
+            <button class="nav-button" data-seccao="seccao-planos" title="Planos de Treino">
+                <span class="icon">📅</span><span class="text">Planos</span>
+            </button>
             <button class="nav-button" data-seccao="seccao-treino-wc" title="Treino de Wing Chun">
                 <span class="icon">✊</span><span class="text">Técnicas</span>
             </button>
             <button class="nav-button" data-seccao="seccao-condicionamento" title="Condicionamento">
                 <span class="icon">💪</span><span class="text">Físico</span>
             </button>
-            <!-- Novo Botão de Navegação: Histórico -->
+            <!-- Novo: Botão Nutrição -->
+            <button class="nav-button" data-seccao="seccao-nutricao" title="Nutrição">
+                <span class="icon">🍎</span><span class="text">Nutrição</span>
+            </button>
             <button class="nav-button" data-seccao="seccao-historico" title="Histórico de Treino">
                 <span class="icon">📖</span><span class="text">Histórico</span>
             </button>
@@ -54,6 +63,7 @@
         <img id="user-status-avatar" src="https://placehold.co/100x100/2c2c2c/ecf0f1?text=U" alt="Avatar do Utilizador">
         <div class="user-info">
             <span id="user-status-name">Praticante</span>
+            <span id="user-status-title" class="user-title"></span>
             <span id="user-status-belt">Cinturão Branco</span>
         </div>
         <div class="progress-bar-wrapper">
@@ -71,95 +81,79 @@
                 <h2 class="subtitulo-seccao">Cria o Teu Perfil</h2>
                 <label for="perfil-nome">Nome:</label>
                 <input type="text" id="perfil-nome" placeholder="Ex: Alex">
-                
-                <!-- Nova Secção de Seleção de Avatar -->
                 <h3 class="subtitulo-seccao" style="font-size: 1.8em; margin-top: 20px;">Escolhe o Teu Avatar:</h3>
                 <div id="avatar-selection-grid"></div>
-
                 <button id="guardarPerfilBtn" class="action-button perfil-action-button">Começar a Treinar</button>
             </div>
-            <div id="perfil-passaporte-view" style="display: none;">
-                <div class="passaporte-layout">
-                    <img id="passaporte-avatar-display" src="https://placehold.co/150x150/2c2c2c/ecf0f1?text=U" alt="Avatar">
-                    <div class="passaporte-info">
-                         <p><strong>Nome:</strong> <span id="passaporte-nome"></span></p>
-                         <p><strong>Nível:</strong> <span id="passaporte-belt"></span></p>
-                         <p><strong>XP Total:</strong> <span id="passaporte-pontos"></span></p>
-                         <p><strong>Sequência:</strong> <span id="passaporte-streak"></span> 🔥</p>
-                         <p><strong>Conquistas:</strong> <span id="passaporte-achievements"></span> 🏆</p>
+            
+            <!-- Perfil com Abas -->
+            <div id="perfil-main-view" style="display: none;">
+                <div class="profile-tabs">
+                    <button class="tab-link active" data-tab="tab-passaporte">Passaporte</button>
+                    <button class="tab-link" data-tab="tab-estatisticas">Estatísticas</button>
+                    <button class="tab-link" data-tab="tab-titulos">Títulos</button>
+                </div>
+
+                <div id="tab-passaporte" class="tab-content active">
+                    <div class="passaporte-layout">
+                        <img id="passaporte-avatar-display" src="https://placehold.co/150x150/2c2c2c/ecf0f1?text=U" alt="Avatar">
+                        <div class="passaporte-info">
+                            <p><strong>Nome:</strong> <span id="passaporte-nome"></span></p>
+                            <p><strong>Título:</strong> <span id="passaporte-titulo" class="user-title"></span></p>
+                            <p><strong>Nível:</strong> <span id="passaporte-belt"></span></p>
+                            <p><strong>XP Total:</strong> <span id="passaporte-pontos"></span></p>
+                            <p><strong>Sequência:</strong> <span id="passaporte-streak"></span> 🔥</p>
+                            <p><strong>Conquistas:</strong> <span id="passaporte-achievements"></span> 🏆</p>
+                        </div>
+                    </div>
+                    <button id="editarPerfilBtn" class="action-button perfil-action-button">Editar Perfil</button>
+                </div>
+
+                <div id="tab-estatisticas" class="tab-content">
+                    <h2 class="subtitulo-seccao">As Tuas Estatísticas</h2>
+                    <div id="stats-grid"></div>
+                    <div class="chart-container">
+                        <canvas id="xp-chart"></canvas>
                     </div>
                 </div>
-                 <button id="editarPerfilBtn" class="action-button perfil-action-button">Editar Perfil</button>
+
+                <div id="tab-titulos" class="tab-content">
+                    <h2 class="subtitulo-seccao">Os Teus Títulos</h2>
+                    <div id="titles-grid"></div>
+                </div>
             </div>
         </section>
 
-        <section id="seccao-cinturoes" class="seccao">
-            <h1 class="titulo-seccao">Progressão de Cinturões</h1>
-            <div id="belt-progression-container"></div>
-        </section>
+        <section id="seccao-cinturoes" class="seccao"></section>
+        <section id="seccao-daily" class="seccao"></section>
+        <section id="seccao-planos" class="seccao"></section>
+        <section id="seccao-treino-wc" class="seccao"></section>
+        <section id="seccao-condicionamento" class="seccao"></section>
+        <section id="seccao-nutricao" class="seccao"></section>
+        <section id="seccao-historico" class="seccao"></section>
+        <section id="seccao-filosofia" class="seccao"></section>
+        <section id="seccao-achievements" class="seccao"></section>
 
-        <section id="seccao-daily" class="seccao">
-            <h1 class="titulo-seccao">Desafio Diário</h1>
-            <div id="daily-challenge-card"></div>
-        </section>
-
-        <section id="seccao-treino-wc" class="seccao">
-            <h1 class="titulo-seccao">Treino de Wing Chun</h1>
-            <!-- Nova Barra de Pesquisa -->
-            <div class="search-wrapper">
-                <input type="search" id="search-treino-wc" class="search-bar" placeholder="Pesquisar técnica...">
-            </div>
-            <div id="container-treinos-wc"></div>
-        </section>
-
-        <section id="seccao-condicionamento" class="seccao">
-            <h1 class="titulo-seccao">Condicionamento Físico</h1>
-            <!-- Nova Barra de Pesquisa -->
-            <div class="search-wrapper">
-                <input type="search" id="search-condicionamento" class="search-bar" placeholder="Pesquisar exercício...">
-            </div>
-            <div id="container-treinos-condicionamento"></div>
-        </section>
-        
-        <!-- Nova Secção de Histórico -->
-        <section id="seccao-historico" class="seccao">
-            <h1 class="titulo-seccao">Histórico de Treino</h1>
-            <div id="container-historico">
-                <p>Ainda não completaste nenhum treino. Vai treinar!</p>
-            </div>
-        </section>
-
-        <section id="seccao-filosofia" class="seccao">
-            <h1 class="titulo-seccao">Filosofia de Treino</h1>
-            <div id="container-filosofia"></div>
-        </section>
-        
-        <section id="seccao-achievements" class="seccao">
-            <h1 class="titulo-seccao">Conquistas</h1>
-            <div id="achievements-grid"></div>
-        </section>
     </div>
 
-    <!-- Modal de Vídeo (sem alterações estruturais) -->
+    <!-- Modal de Vídeo com tag <video> -->
     <div id="video-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" role="button" tabindex="0" aria-label="Fechar modal">&times;</span>
             <h3 id="modal-title"></h3>
-            <div id="modal-video-container"></div>
+            <div id="modal-video-container">
+                <video id="modal-video-player" controls width="100%"></video>
+            </div>
         </div>
     </div>
 
-    <!-- Nova Modal de Feedback -->
+    <!-- Modal de Feedback (sem alterações) -->
     <div id="feedback-modal" class="modal">
         <div class="modal-content">
             <h3 id="feedback-modal-title">Feedback do Treino</h3>
             <p>Como te sentiste a realizar este exercício?</p>
             <div class="star-rating">
-                <span class="star" data-value="1">☆</span>
-                <span class="star" data-value="2">☆</span>
-                <span class="star" data-value="3">☆</span>
-                <span class="star" data-value="4">☆</span>
-                <span class="star" data-value="5">☆</span>
+                <span class="star" data-value="1">☆</span><span class="star" data-value="2">☆</span><span class="star" data-value="3">☆</span><span class="star" data-value="4">☆</span><span class="star" data-value="5">☆</span>
             </div>
             <button id="save-feedback-btn" class="action-button" disabled>Guardar Feedback</button>
         </div>
