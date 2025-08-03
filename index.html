@@ -37,6 +37,10 @@
             <button class="nav-button" data-seccao="seccao-condicionamento" title="Condicionamento">
                 <span class="icon">💪</span><span class="text">Físico</span>
             </button>
+            <!-- Novo Botão de Navegação: Histórico -->
+            <button class="nav-button" data-seccao="seccao-historico" title="Histórico de Treino">
+                <span class="icon">📖</span><span class="text">Histórico</span>
+            </button>
             <button class="nav-button" data-seccao="seccao-filosofia" title="Filosofia">
                 <span class="icon">📜</span><span class="text">Filosofia</span>
             </button>
@@ -64,9 +68,14 @@
         <section id="seccao-perfil" class="seccao visivel">
             <h1 class="titulo-seccao">O Teu Perfil</h1>
             <div id="perfil-form-view">
-                <h2 class="subtitulo-seccao">Insere o Teu Nome</h2>
+                <h2 class="subtitulo-seccao">Cria o Teu Perfil</h2>
                 <label for="perfil-nome">Nome:</label>
                 <input type="text" id="perfil-nome" placeholder="Ex: Alex">
+                
+                <!-- Nova Secção de Seleção de Avatar -->
+                <h3 class="subtitulo-seccao" style="font-size: 1.8em; margin-top: 20px;">Escolhe o Teu Avatar:</h3>
+                <div id="avatar-selection-grid"></div>
+
                 <button id="guardarPerfilBtn" class="action-button perfil-action-button">Começar a Treinar</button>
             </div>
             <div id="perfil-passaporte-view" style="display: none;">
@@ -80,7 +89,7 @@
                          <p><strong>Conquistas:</strong> <span id="passaporte-achievements"></span> 🏆</p>
                     </div>
                 </div>
-                 <button id="editarPerfilBtn" class="action-button perfil-action-button">Editar Nome</button>
+                 <button id="editarPerfilBtn" class="action-button perfil-action-button">Editar Perfil</button>
             </div>
         </section>
 
@@ -96,12 +105,28 @@
 
         <section id="seccao-treino-wc" class="seccao">
             <h1 class="titulo-seccao">Treino de Wing Chun</h1>
+            <!-- Nova Barra de Pesquisa -->
+            <div class="search-wrapper">
+                <input type="search" id="search-treino-wc" class="search-bar" placeholder="Pesquisar técnica...">
+            </div>
             <div id="container-treinos-wc"></div>
         </section>
 
         <section id="seccao-condicionamento" class="seccao">
             <h1 class="titulo-seccao">Condicionamento Físico</h1>
+            <!-- Nova Barra de Pesquisa -->
+            <div class="search-wrapper">
+                <input type="search" id="search-condicionamento" class="search-bar" placeholder="Pesquisar exercício...">
+            </div>
             <div id="container-treinos-condicionamento"></div>
+        </section>
+        
+        <!-- Nova Secção de Histórico -->
+        <section id="seccao-historico" class="seccao">
+            <h1 class="titulo-seccao">Histórico de Treino</h1>
+            <div id="container-historico">
+                <p>Ainda não completaste nenhum treino. Vai treinar!</p>
+            </div>
         </section>
 
         <section id="seccao-filosofia" class="seccao">
@@ -115,11 +140,28 @@
         </section>
     </div>
 
+    <!-- Modal de Vídeo (sem alterações estruturais) -->
     <div id="video-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal" role="button" tabindex="0" aria-label="Fechar modal">&times;</span>
             <h3 id="modal-title"></h3>
             <div id="modal-video-container"></div>
+        </div>
+    </div>
+
+    <!-- Nova Modal de Feedback -->
+    <div id="feedback-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="feedback-modal-title">Feedback do Treino</h3>
+            <p>Como te sentiste a realizar este exercício?</p>
+            <div class="star-rating">
+                <span class="star" data-value="1">☆</span>
+                <span class="star" data-value="2">☆</span>
+                <span class="star" data-value="3">☆</span>
+                <span class="star" data-value="4">☆</span>
+                <span class="star" data-value="5">☆</span>
+            </div>
+            <button id="save-feedback-btn" class="action-button" disabled>Guardar Feedback</button>
         </div>
     </div>
 

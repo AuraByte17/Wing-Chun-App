@@ -89,6 +89,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: var(--spacing-m) 0;
+    overflow-y: auto; /* Para permitir scroll se houver muitos botões */
 }
 
 .sidebar-header .app-logo img {
@@ -133,9 +134,10 @@ body {
     text-transform: uppercase;
 }
 
-.nav-button:hover {
+.nav-button:hover, .nav-button:focus {
     background-color: rgba(230, 126, 34, 0.2);
     color: var(--primary-color);
+    outline: none;
 }
 
 .nav-button.active {
@@ -249,6 +251,21 @@ body {
     margin-bottom: var(--spacing-m);
 }
 
+/* Barra de Pesquisa */
+.search-wrapper {
+    margin-bottom: var(--spacing-l);
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-color);
+    border: 1px solid #555;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    font-size: 1.1em;
+}
+
 /* Estilos dos Itens de Treino */
 .training-category {
     margin-bottom: var(--spacing-xl);
@@ -290,17 +307,33 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: relative;
 }
+/* Estilo para o ícone de play */
+.item-treino-video::after {
+    content: '▶';
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    transition: transform 0.3s;
+}
+
+.item-treino:hover .item-treino-video::after {
+    transform: scale(1.2);
+}
+
 
 .item-treino-video img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
+    opacity: 0.5;
 }
 
 .item-treino:hover .item-treino-video img {
     transform: scale(1.05);
+    opacity: 0.7;
 }
 
 .item-treino-titulo {
@@ -346,7 +379,7 @@ body {
     transition: var(--transition-fast), background-color 0.5s;
 }
 
-.action-button:hover {
+.action-button:hover:not(:disabled) {
     background-color: var(--secondary-color);
 }
 
@@ -356,12 +389,39 @@ body {
     cursor: not-allowed;
 }
 
-/* Secção de Perfil */
+/* Secção de Perfil e Seleção de Avatar */
 #perfil-form-view, #perfil-passaporte-view {
     max-width: 800px;
     margin: 0 auto;
     text-align: left;
 }
+
+#avatar-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 15px;
+    margin-bottom: var(--spacing-l);
+}
+
+.avatar-option {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.avatar-option:hover, .avatar-option:focus {
+    border-color: var(--text-secondary-color);
+}
+
+.avatar-option.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
 
 .passaporte-layout {
     display: flex;
@@ -376,6 +436,7 @@ body {
     border-radius: 50%;
     border: 4px solid var(--primary-color);
     transition: border-color 0.5s;
+    object-fit: cover;
 }
 
 .passaporte-info {
@@ -569,7 +630,7 @@ body {
 .achievement-badge.unlocked h4 { color: var(--primary-color); transition: color 0.5s; }
 
 
-/* Notificação e Modal */
+/* Notificação e Modais */
 #notification {
     display: none;
     position: fixed;
@@ -610,7 +671,7 @@ body {
     padding: var(--spacing-m);
     border: 1px solid #888;
     width: 90%;
-    max-width: 640px;
+    max-width: 800px; /* Aumentado para vídeos */
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
     animation: popIn 0.4s;
@@ -641,6 +702,89 @@ body {
     transition: color 0.5s;
 }
 
+/* Estilo para o container do vídeo, para o tornar responsivo */
+#modal-video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 8px;
+}
+
+#modal-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Modal de Feedback e Estrelas */
+#feedback-modal .modal-content {
+    max-width: 500px;
+    text-align: center;
+}
+
+.star-rating {
+    font-size: 3em;
+    cursor: pointer;
+    margin: var(--spacing-m) 0;
+}
+
+.star {
+    color: #555;
+    transition: color 0.2s;
+}
+
+.star.rated,
+.star:hover,
+.star:hover ~ .star {
+    color: #f1c40f;
+}
+.star-rating:hover .star.rated {
+    color: #f1c40f;
+}
+
+
+/* Secção de Histórico */
+#container-historico {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+    text-align: left;
+}
+
+.history-item {
+    background-color: var(--bg-color);
+    padding: var(--spacing-m);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-left: 4px solid var(--primary-color);
+}
+
+.history-item-info .title {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.history-item-info .date {
+    font-size: 0.9em;
+    color: var(--text-secondary-color);
+}
+.history-item-feedback .stars {
+    color: #f1c40f;
+}
+.history-item-feedback .xp {
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+
 /* Responsivo */
 @media (max-width: 768px) {
     body {
@@ -654,10 +798,12 @@ body {
         right: 0;
         height: var(--sidebar-width);
         width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
     .nav-buttons-container {
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start; /* Alinhado à esquerda para permitir scroll */
         margin-top: 0;
         flex-grow: 1;
     }
@@ -669,5 +815,11 @@ body {
     }
     .titulo-seccao {
         font-size: 2.5em;
+    }
+    #user-status-display {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        width: auto;
     }
 }
